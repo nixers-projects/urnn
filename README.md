@@ -25,10 +25,10 @@ input_var input_var
 output_var
 ````
 
-To express the colors themselves the best way would probably be to convert the hex to RGB and simply put a decimal in front of it. For example, to convert #bada55 to a float:
+To express a color we'll be using 3 neurons, each having a ratio of red, green, and blue
 
 ````
-#bada55 = 186,218,085 = 0.186218085
+#bcbcaf = 0.737255 0.737255 0.686275
 ````
 
 ### images/
