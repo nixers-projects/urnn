@@ -52,8 +52,8 @@ sub extract_hex {
 		for my $i (keys %COLORS_INDEXES) {
 			if (/$i/) {
 				chomp;
-				$_ =~ /#([\dabcdef]{6})/;
-				$COLORS[$COLORS_INDEXES{$i}] = $1;
+				$_ =~ /#([\dabcdef]{6})/i;
+				$COLORS[$COLORS_INDEXES{$i}] = lc($1);
 			}
 		}
 	}
