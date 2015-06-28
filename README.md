@@ -32,7 +32,7 @@ To express a color we'll be using 3 neurons, each having a ratio of red, green, 
 ````
 
 Thus the input will consist of 3 times the X most used colors in the image and
-the output will consist of 54 neurons, 3 times the 8 colors used in a terminal
+the output will consist of 54 neurons, 3 times the 18 colors used in a terminal
 colorscheme.
 
 ### images/
