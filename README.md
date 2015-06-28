@@ -13,7 +13,7 @@ image, which might then be used as background.
 
 ### convert/
 
-Written in C, this tool will convert all the images in images/ to a data.train file that follows the format specified by fann.
+This tool will convert all the images in images/ to a data.train file that follows the format specified by fann.
 
 ````
 num_data_sets input_vars output_vars
