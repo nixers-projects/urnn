@@ -1,24 +1,44 @@
 ### urnn
 
-**u**nix **r**icing **n**eural **n**etwork
-
-
-###A Simple Starting[ Idea
-
 A neural network to smartly create coherent terminal colorschemes based on an
 image, which might then be used as background.
 
+### process
 
-Steps needed to achieve this:
+* scrape images (png only)
 
-* Gather images with related colorschemes
+* use convert/ tool to convert all the images in images/ to a data.train file 
 
-* Extract the 10 or so most used colors from the images that are at least separated by a delta factor (we don't want to only have shades of greys if there's a lot of grey in an image)
+* use the data.train file to train the network
 
-* Convert the hexadecimal code for the color into 3 neurons which should have a value varying from 0 to 1
+### convert/
 
-* Train the network
+Written in C, this tool will convert all the images in images/ to a data.train file that follows the format specified by fann.
 
-* ???
+````
+num_data_sets input_vars output_vars
+input_var input_var
+output_var
+input_var input_var
+output_var
+input_var input_var
+output_var
+````
 
-* Profit
+To express the colors themselves the best way would probably be to convert the hex to RGB and simply put a decimal in front of it. For example, to convert #bada55 to a float:
+
+````
+#bada55 = 186,218,085
+````
+
+### images/
+
+This tool can be written in whatever, we just need to figure out the best place to scrape images from and record the data we want. 
+
+### what's next
+
+* write convert/
+
+* scrape images
+
+* profit
