@@ -92,7 +92,7 @@ convert_file(const std::string filename, const float ratio)
 	while (std::getline(infile, line)) {
 		line = strip(line, '#');
 		float* col = convert_hex_to_ratio(line, ratio);
-		std::cout<< col[0]<< " "<< col[1]<< " "<< col[2]<< std::endl;
+		std::cout<< col[0]<< " "<< col[1]<< " "<< col[2]<< " ";
 	}
 }
 
