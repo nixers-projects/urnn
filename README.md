@@ -31,6 +31,10 @@ To express a color we'll be using 3 neurons, each having a ratio of red, green, 
 #bcbcaf = 0.737255 0.737255 0.686275
 ````
 
+Thus the input will consist of 3 times the X most used colors in the image and
+the output will consist of 54 neurons, 3 times the 8 colors used in a terminal
+colorscheme.
+
 ### images/
 
 This tool can be written in whatever, we just need to figure out the best place to scrape images from and record the data we want. 
