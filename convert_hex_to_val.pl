@@ -19,7 +19,8 @@ NB: This program shouldn't fail otherwise it might corrupt the training data
 
 sub HELP {
 	print "Usage $0 \t [file with hexcode on every line] [ratio]\n"
-	."Converts color hex code to red, green, blue percentage over the ratio.\n";
+	."Converts color hex code to red, green, blue percentage over the ratio.\n"
+	."Use -s as a file for stdin\n";
 	exit;
 }
 
@@ -39,7 +40,13 @@ sub convert_hex_to_ratio {
 
 sub convert_file {
 	my ($filename, $ratio) = @_;
-	open(my $fh, "<", $filename) or die "$!";
+	my $fh;
+	if ($filename eq '-s') {
+		$fh = \*stdin;
+	}
+	else {
+		open($fh, "<", $filename) or die "$!";
+	}
 	while (<$fh>) {
 		chomp;
 		$_ =~ s/#//;

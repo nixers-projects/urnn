@@ -17,7 +17,8 @@ Extracts the hex codes from the .Xresources one per line and always in the same 
 
 sub HELP {
 	print "Usage $0 \t [xresources file]\n"
-	."Extracts the hex codes from the .Xresources one per line and always in the same order.\n";
+	."Extracts the hex codes from the .Xresources one per line and always in the same order.\n"
+	."Use -s as a file for stdin\n";
 	exit;
 }
 
@@ -47,7 +48,13 @@ my %COLORS_INDEXES = (
 
 sub extract_hex {
 	my ($source) = @_;
-	open(my $fh, "<", $source) or die "$!";
+	my $fh;
+	if ($source eq '-s') {
+		$fh = \*stdin;
+	}
+	else {
+		open($fh, "<", $source) or die "$!";
+	}
 	while (<$fh>) {
 		for my $i (keys %COLORS_INDEXES) {
 			if (/$i/) {
