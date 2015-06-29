@@ -10,9 +10,6 @@
  *
  * NB: This program shouldn't fail otherwise it might corrupt the training data
  *
- * TODO: Make it work with generic .Xresources file, finding the color lines and
- * arranging them in the right order.
- *
  */
 
 
