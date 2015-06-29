@@ -69,11 +69,122 @@ func convertXYZToLAB(x, y, z float64) (float64, float64, float64) {
 	yd := <-yc
 	zd := <-zc
 
-	var l float64 = (116.0 * yd) - 16.0
-	var a float64 = 500.0 * (xd - yd)
-	var b float64 = 200.0 * (yd - zd)
+	l := (116.0 * yd) - 16.0
+	a := 500.0 * (xd - yd)
+	b := 200.0 * (yd - zd)
 
 	return l, a, b
+}
+
+func convertRadToDeg(rad float64) float64 {
+	return (rad * 180.0) / math.Pi
+}
+
+func convertDegToRad(deg float64) float64 {
+	return (deg * math.Pi) / 180.0
+}
+
+func convertLABToHue(a, b float64) float64 {
+	var bias float64 = 0
+	if a >= 0 && b == 0 {
+		return 0
+	}
+	if a < 0 && b == 0 {
+		return 180
+	}
+	if a == 0 && b > 0 {
+		return 90
+	}
+	if a == 0 && b < 0 {
+		return 270
+	}
+	if a > 0 && b > 0 {
+		bias = 0
+	}
+	if a < 0 {
+		bias = 180
+	}
+	if a > 0 && b < 0 {
+		bias = 360
+	}
+	return (convertRadToDeg(math.Atan(b/a)) + bias)
+}
+
+func round(v float64, decimals int) float64 {
+	var pow float64 = 1
+	for i := 0; i < decimals; i++ {
+		pow *= 10
+	}
+	return float64(int((v*pow)+0.5)) / pow
+}
+
+func calculateDelta(l1, a1, b1, l2, a2, b2 float64) float64 {
+	wht_l := 1.0
+	wht_c := 1.0
+	wht_h := 1.0
+
+	xc1 := math.Sqrt((a1 * a1) + (b1 * b1))
+	xc2 := math.Sqrt((a2 * a2) + (b2 * b2))
+	xcx := (xc1 + xc2) / 2.0
+	xgx := 0.5 * (1.0 - math.Sqrt((math.Pow(xcx, 7.0))/((math.Pow(xcx, 7.0))+(math.Pow(25.0, 7.0)))))
+	xnn := (1.0 + xgx) * a1
+	xc1 = math.Sqrt((xnn * xnn) + (b1 * b1))
+	xh1 := convertLABToHue(xnn, b1)
+	xnn = (1.0 + xgx) * a2
+	xc2 = math.Sqrt((xnn * xnn) + (b2 * b2))
+	xh2 := convertLABToHue(xnn, b2)
+	xdl := l2 - l1
+	xdc := xc2 - xc1
+
+	var xdh float64
+	if (xc1 * xc2) == 0 {
+		xdh = 0
+	} else {
+		xnn = round(xh2-xh1, 12)
+		if math.Abs(xnn) <= 180 {
+			xdh = xh2 - xh1
+		} else {
+			if xnn > 180 {
+				xdh = xh2 - xh1 - 360.0
+			} else {
+				xdh = xh2 - xh1 + 360.0
+			}
+		}
+	}
+
+	xdh = 2.0 * math.Sqrt(xc1*xc2) * math.Sin(convertDegToRad(xdh/2.0))
+	xlx := (l1 + l2) / 2.0
+	xcy := (xc1 + xc2) / 2.0
+
+	var xhx float64
+	if (xc1 * xc2) == 0 {
+		xhx = xh1 + xh2
+	} else {
+		xnn = math.Abs(round(xh1-xh2, 12))
+		if xnn > 180 {
+			if (xh2 + xh1) < 360 {
+				xhx = xh1 + xh2 + 360.0
+			} else {
+				xhx = xh1 + xh2 - 360.0
+			}
+		} else {
+			xhx = xh1 + xh2
+		}
+		xhx = xhx / 2.0
+	}
+
+	xtx := 1.0 - 0.17*math.Cos(convertDegToRad(xhx-30.0)) + 0.24*math.Cos(convertDegToRad(2.0*xhx)) + 0.32*math.Cos(convertDegToRad(3.0*xhx+6.0)) - 0.20*math.Cos(convertDegToRad(4.0*xhx-63.0))
+	xph := 30.0 * math.Exp((-1.0 * ((xhx - 275.0) / 25.0) * ((xhx - 275.0) / 25.0)))
+	xrc := 2.0 * math.Sqrt((math.Pow(xcy, 7.0))/((math.Pow(xcy, 7.0))+math.Pow(25.0, 7.0)))
+	xsl := 1.0 + ((0.015 * ((xlx - 50.0) * (xlx - 50.0))) / math.Sqrt(20.0+((xlx-50.0)*(xlx-50.0))))
+	xsc := 1.0 + (0.045 * xcy)
+	xsh := 1.0 + (0.015 * xcy * xtx)
+	xrt := (-1.0 * math.Sin(convertDegToRad(2.0*xph))) * xrc
+	xdl = xdl / (wht_l * xsl)
+	xdc = xdc / (wht_c * xsc)
+	xdh = xdh / (wht_h * xsh)
+	e := math.Sqrt(math.Pow(xdl, 2) + math.Pow(xdc, 2) + math.Pow(xdh, 2) + (xrt * xdc * xdh))
+	return e
 }
 
 func extractColors(img image.Image, width, height int) []string {
@@ -140,6 +251,11 @@ func main() {
 
 	_ = extractColors(img, width, height)
 
-	x, y, z := convertRGBToXYZ(62, 224, 62)
-	fmt.Println(convertXYZToLAB(x, y, z))
+	x1, y1, z1 := convertRGBToXYZ(255, 255, 255)
+	x2, y2, z2 := convertRGBToXYZ(234, 234, 234)
+
+	l1, a1, b1 := convertXYZToLAB(x1, y1, z1)
+	l2, a2, b2 := convertXYZToLAB(x2, y2, z2)
+
+	fmt.Println(calculateDelta(l1, a1, b1, l2, a2, b2))
 }
