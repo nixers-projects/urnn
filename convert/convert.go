@@ -7,6 +7,7 @@ import (
 	_ "image/png"
 	"io/ioutil"
 	"math"
+	"strconv"
 	"os"
 )
 
@@ -193,7 +194,7 @@ type Pixel struct {
 	Count int
 }
 
-func extractColors(img image.Image, width, height int) map[string]Pixel {
+func extractColors(img image.Image, width, height int, userDelta float64) map[string]Pixel {
 
 	pixels := make(map[string]Pixel)
 	row := make(chan Pixel, height*width)
@@ -237,7 +238,7 @@ func extractColors(img image.Image, width, height int) map[string]Pixel {
 	for k, v := range pixels {
 		e := pixels[most_used]
 		delta := calculateDelta(v.Lab[0], v.Lab[1], v.Lab[2], e.Lab[0], e.Lab[1], e.Lab[2])
-		if delta < 70 || v.Count < 100 {
+		if delta < userDelta || v.Count < 100 {
 			list = append(list, k)
 		}
 	}
@@ -247,9 +248,17 @@ func extractColors(img image.Image, width, height int) map[string]Pixel {
 	return pixels
 }
 
+func usage() {
+	fmt.Fprintf(os.Stderr, "Usage cat image.png | %s [delta]\n", os.Args[0])
+	os.Exit(2)
+}
+
 func main() {
 	// reads stdin into rawImg which is a []byte containing all the bytes
 	// of the image
+	if len(os.Args) != 2 {
+		usage()
+	}
 	rawImg, err := ioutil.ReadAll(os.Stdin)
 	if err != nil {
 		panic(err)
@@ -267,7 +276,8 @@ func main() {
 	width := int(img.Bounds().Dx())
 	height := int(img.Bounds().Dy())
 
-	colors := extractColors(img, width, height)
+	delta, err := strconv.ParseFloat(os.Args[1], 64)
+	colors := extractColors(img, width, height, delta)
 	for k, v := range colors {
 		fmt.Println(k, v.Count)
 	}
