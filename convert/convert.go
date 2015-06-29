@@ -187,46 +187,64 @@ func calculateDelta(l1, a1, b1, l2, a2, b2 float64) float64 {
 	return e
 }
 
-func extractColors(img image.Image, width, height int) []string {
-	// colors is what we will return, containing the complete colorscheme
-	var colors []string
+type Pixel struct {
+	Hex   string
+	Lab   [3]float64
+	Count int
+}
 
-	// row is our buffered channel that will receive the top color from
-	// each row (of pixels)
-	row := make(chan string, height)
+func extractColors(img image.Image, width, height int) map[string]Pixel {
 
-	// done is our bool channel that will be written to once all the rows
-	// are done
+	pixels := make(map[string]Pixel)
+	row := make(chan Pixel, height*width)
 	done := make(chan bool)
 
-	go func() {
-		for i := 0; i < height; i++ {
-			colors = append(colors, <-row)
-		}
+	var most_used string
+	var most_used_num int
 
+	go func() {
+		for i := 0; i < (height * width); i++ {
+			pixel := <-row
+			ext_pixel := pixels[pixel.Hex]
+			ext_pixel.Count++
+			ext_pixel.Lab = pixel.Lab
+			pixels[pixel.Hex] = ext_pixel
+		}
+		for k, v := range pixels {
+			if v.Count > most_used_num {
+				most_used_num = v.Count
+				most_used = k
+			}
+		}
 		done <- true
 	}()
 
 	for i := 0; i < height; i++ {
 		go func(y int) {
-			collection := make(map[string]struct{})
 			for a := 0; a < width; a++ {
 				color := img.At(a, y)
 				r, g, b, _ := color.RGBA()
-				//x, y, z := convertRGBToXYZ(int(r), int(g), int(b))
-				collection[fmt.Sprintf("#%-x", []byte{uint8(r), uint8(g), uint8(b)})] = struct{}{}
+				hex := fmt.Sprintf("#%-x", []byte{uint8(r), uint8(g), uint8(b)})
+				l1, a1, b1 := convertXYZToLAB(convertRGBToXYZ(int(r), int(g), int(b)))
+				list := [3]float64{l1, a1, b1}
+				row <- Pixel{hex, list, 0}
 			}
-			for k, _ := range collection {
-				// here will be the delta-e shit
-				fmt.Print(k + " ")
-			}
-			fmt.Println()
-			row <- "#bada55"
 		}(i)
 	}
 
 	<-done
-	return colors
+	var list []string
+	for k, v := range pixels {
+		e := pixels[most_used]
+		delta := calculateDelta(v.Lab[0], v.Lab[1], v.Lab[2], e.Lab[0], e.Lab[1], e.Lab[2])
+		if delta < 70 || v.Count < 100 {
+			list = append(list, k)
+		}
+	}
+	for _, v := range list {
+		delete(pixels, v)
+	}
+	return pixels
 }
 
 func main() {
@@ -249,13 +267,8 @@ func main() {
 	width := int(img.Bounds().Dx())
 	height := int(img.Bounds().Dy())
 
-	_ = extractColors(img, width, height)
-
-	x1, y1, z1 := convertRGBToXYZ(255, 255, 255)
-	x2, y2, z2 := convertRGBToXYZ(234, 234, 234)
-
-	l1, a1, b1 := convertXYZToLAB(x1, y1, z1)
-	l2, a2, b2 := convertXYZToLAB(x2, y2, z2)
-
-	fmt.Println(calculateDelta(l1, a1, b1, l2, a2, b2))
+	colors := extractColors(img, width, height)
+	for k, v := range colors {
+		fmt.Println(k, v.Count)
+	}
 }
