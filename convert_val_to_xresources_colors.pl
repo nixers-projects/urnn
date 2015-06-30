@@ -26,9 +26,9 @@ sub HELP {
 
 sub rgb_to_hex {
 	my ($red, $green, $blue, $ratio) = @_;
-	my $red_hex = sprintf("%x", ($red*255)/$ratio);
-	my $green_hex = sprintf("%x", ($green*255)/$ratio);
-	my $blue_hex = sprintf("%x", ($blue*255)/$ratio);
+	my $red_hex = sprintf("%02x", ($red*255)/$ratio);
+	my $green_hex = sprintf("%02x", ($green*255)/$ratio);
+	my $blue_hex = sprintf("%02x", ($blue*255)/$ratio);
 	return "#$red_hex$green_hex$blue_hex";
 }
 
@@ -44,7 +44,7 @@ sub convert_file {
 	}
 	while (<$fh>) {
 		chomp;
-		my ($red, $green, $blue) = $_ =~ m#(\d+\.\d+) (\d+\.\d+) (\d+\.\d+)#;
+		my ($red, $green, $blue) = $_ =~ m#(\d+(?:\.\d+)?) (\d+(?:\.\d+)?) (\d+(?:\.\d+)?)#;
 		my $hexcode = rgb_to_hex($red, $green, $blue, $ratio);
 		print "$hexcode\n";
 	}
