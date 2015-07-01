@@ -41,6 +41,7 @@ main(int argc, char* argv[])
 
 		fann_set_activation_function_hidden(ann, FANN_SIGMOID_SYMMETRIC);
 		fann_set_activation_function_output(ann, FANN_SIGMOID_SYMMETRIC);
+		fann_set_activation_steepness_output(ann, 0.2);
 
 		fann_train_on_file(
 			ann,
