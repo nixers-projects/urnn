@@ -1,0 +1,84 @@
+! URXVT FONTS
+!------------------------------------------------
+
+URxvt*font: xft:Inconsolata-Regular:pixelsize=13
+URxvt*boldFont: xft:Inconsolata-Bold:pixelsize=13
+URxvt*letterSpace: -1
+URxvt*allow_bold: true
+
+
+! URXVT ENABLE LINK SUPPORT
+!------------------------------------------------
+
+URxvt.perl-ext-common: default,matcher,tabbedex,vtwheel,clipboard
+!tabbed
+URxvt.matcher.button:   1
+URxvt.perl-ext:      default,url-select
+URxvt.keysym.M-u: perl:url-select:select_next
+URxvt.url-select.launcher:   /usr/bin/google-chrome
+URxvt.url-select.underline: true
+
+!disable the fucking bell
+URxvt.insecure: 			false
+
+! URXVT COPY PASTE SHORTCUTS
+!------------------------------------------------
+
+URxvt.keysym.M-c: 			perl:clipboard:copy
+URxvt.keysym.M-v: 			perl:clipboard:pasteq
+
+! URXVT SCROLLBAR AND CURSOR STYLE
+!------------------------------------------------
+
+URxvt*saveLines: 			300000
+URxvt.scrollBar: 			false
+!URxvt*scrollstyle:			plain
+URxvt*cursorBlink: 			false
+URxvt*cursorUnderline: 		true
+URxvt*cursorColor: 			#98d467
+
+! URXVT TABS
+!------------------------------------------------
+
+URxvt.tabbedex.autohide: 	yes
+URxvt.tabbedex.tabbar-fg: 	2
+URxvt.tabbedex.tabbar-bg: 	0
+URxvt.tabbedex.tab-fg:    	10
+URxvt.tabbedex.tab-bg:    	0
+URxvt.tabbedex.title: 		yes
+URxvt.tabbedex.new-button:  no
+
+! URXVT FULLSCREEN TOGGLE
+!------------------------------------------------
+
+URxvt.keysym.F11: 			perl:fullscreen:switch
+
+! URXVT COLORS
+!------------------------------------------------
+
+urxvt*background:       #2d2d2d
+urxvt*foreground:       #F5F5F5
+
+ *color0:  #2d2d2d
+ *color8: #dedede
+!red
+ *color1:  #dedede
+ *color9:  #dedede
+!green
+ *color2:  #98d467
+ *color10: #dedede
+!yellow
+ *color3:  #dedede
+ *color11: #dedede
+!blue   ranger folders
+ *color4:  #98d467
+ *color12: #98d467
+!magenta
+ *color5:  #dedede
+ *color13: #dedede
+!cyan
+ *color6:  #dedede
+ *color14: #dedede
+!white
+ *color7:  #dedede
+ *color15: #dedede

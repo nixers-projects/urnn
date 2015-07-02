@@ -1,0 +1,58 @@
+! URxvt*scrollBar: false
+URxvt*font: xft:Monaco for Powerline:size=8
+! URxvt*font: xft:Input Mono Compressed:size=9
+! URxvt*font: xft:PragmataPro:size=10
+URxvt*depth: 32
+
+URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select
+URxvt.url-select.launcher:  google-chrome-unstable
+URxvt.url-select.underline: true
+URxvt.keysym.M-u:           perl:url-select:select_next
+URxvt.keysym.M-Escape:      perl:keyboard-select:activate
+URxvt.keysym.M-s:           perl:keyboard-select:search
+
+! special
+*.foreground:   #eaeaea
+*.background:   #000000
+*.cursorColor:  #eaeaea
+
+! black
+*.color0:       #2a2a2a
+*.color8:       #666666
+
+! red
+*.color1:       #d54e53
+*.color9:       #ff3334
+
+! green
+*.color2:       #b9ca4a
+*.color10:      #9ec400
+
+! yellow
+*.color3:       #e78c45
+*.color11:      #e7c547
+
+! blue
+*.color4:       #7aa6da
+*.color12:      #7aa6da
+
+! magenta
+*.color5:       #c397d8
+*.color13:      #b777e0
+
+! cyan
+*.color6:       #70c0b1
+*.color14:      #54ced6
+
+! white
+*.color7:       #424242
+*.color15:      #cac4c4
+
+
+ntialias: true
+Xft.autohint: false
+Xft.dpi: 96
+Xft.hinting: true
+Xft.hintstyle: hintslight
+Xft.lcdfilter: lcddefault
+Xft.rgba: rgb
