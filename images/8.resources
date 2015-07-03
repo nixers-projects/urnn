@@ -1,0 +1,25 @@
+*background: #151B1A
+*foreground: #8FA388
+
+! Alternate foreground
+!*foreground: #7E9982
+
+*cursorColor: #9E6438
+
+*color0: #2E2B38
+*color1: #984E66
+*color2: #7A8C54
+*color3: #9E6438
+*color4: #395667
+*color5: #9D916B
+*color6: #536556
+*color7: #828181
+*color8: #474159
+*color9: #A86D56
+*color10: #9FB274
+*color11: #B29F5E
+*color12: #507A91
+*color13: #B89855
+*color14: #7E9982
+*color15: #BDBDA4
+

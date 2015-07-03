@@ -1,0 +1,47 @@
+!! Colours
+! Black
+URxvt.color0:  #002b36
+URxvt.color8:  #073642
+! Red
+URxvt.color1:  #dc322f
+URxvt.color9:  #dc322f
+! Green
+URxvt.color2:  #859900
+URxvt.color10: #859900
+! Yellow
+URxvt.color3:  #b58900
+URxvt.color11: #b58900
+! Blue
+URxvt.color4:  #268bd2
+URxvt.color12: #268bd2
+! Magenta
+URxvt.color5:  #d33682
+URxvt.color13: #d33682
+! Cyan
+URxvt.color6:  #2aa198
+URxvt.color14: #2aa198
+! White
+URxvt.color7:  #fdf6e3
+URxvt.color15: #fdf6e3
+! Background/Foreground
+URxvt*background: #eee8d5
+URxvt*foreground: #fdf6e3
+
+!!Technical stuff
+
+URxvt*scrollBar: false
+URxvt*cursorUnderline: false
+URxvt*colorUL: #9695b5
+URxvt*internalBorder:0
+
+URxvt*font: xft:lemon:size=10
+URxvt*boldFont: xft:lemon:size=10
+URxvt*keysym.Home: \033[1~
+URxvt*keysym.End: \033[4~
+
+URxvt*geometry: 151x48
+URxvt*borderless: true
+
+URxvt*backgroundPixmap: /home/nick/Pictures/invert_bg.xpm;op=root-align:style=root-tiled
+! This is how I got the inverted terminals
+! invert_bg is simply the background image but inverted

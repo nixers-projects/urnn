@@ -1,0 +1,41 @@
+!! Genius_UI Terminal Colours
+
+!! BASE
+!*background: #
+!*foreground: #
+!*cursorColor: #
+!*colorBD: #
+!*colorIT: #
+!*colorUL: #
+
+!! BLACK dark/light
+*color0: #232323
+*color8: #2e2e2e
+
+!! RED dark/light
+*color1: #b95752
+*color9: #e76e66
+
+!! GREEN dark/light
+*color02: #166549
+*color10:	#1b7e5a
+
+!! YELLOW dark/light
+*color3: #b18456
+*color11: #dda56c
+
+!! BLUE dark/light
+*color4: #457b87
+*color12: #579aa9
+
+!! MAGENTA dark/light
+*color5: #544972
+*color13: #695b8e
+
+!! CYAN dark/light
+*color6: #704b62
+*color14: #8c5e7a
+
+!! WHITE dark/light
+*color7: #cdcdcd
+*color15: #f6f6f6
