@@ -32,7 +32,7 @@ main(int argc, char* argv[])
 		const unsigned int num_output = 3*18; // 3 times the 18 colors used in a colorscheme
 		const unsigned int num_layers = 3;
 		const unsigned int num_neurons_hidden = 3;
-		const float desired_error = (const float) 0.09; // be kinda tolerant
+		const float desired_error = (const float) 0.02; // be kinda tolerant
 		const unsigned int max_epochs = 1000000; // allow for a long run
 		const unsigned int epochs_between_reports = 10000;
 
