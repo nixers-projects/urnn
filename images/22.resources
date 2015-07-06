@@ -1,0 +1,35 @@
+!!! tw1st3r - by s3r0
+
+*background:            #08090a
+*foreground:            #606c78
+! black
+*color0:                #393a3d
+*color8:                #414043
+
+! red
+*color1:                #3e2528
+*color9:                #6e322a
+
+! green
+*color2:                #283a3e
+*color10:               #4e6353
+
+! yellow
+*color3:                #344633
+*color11:               #3f5337
+
+! blue
+*color4:                #292b3c
+*color12:               #3f3b48
+
+! magenta
+*color5:                #45282a
+*color13:               #5a2c2d
+
+! cyan
+*color6:                #303e44
+*color14:               #4b595a
+
+! white
+*color7:                #65624b
+*color15:               #6c6650
