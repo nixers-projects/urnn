@@ -1,0 +1,35 @@
+*.foreground:   #cccccc
+*.background:   #2d2d2d
+*.cursorColor:  #aeafad
+
+! Black / Grey
+*.color0:       #000000
+*.color8:       #666666
+
+! Red / Bright Red
+*.color1:       #f2777a
+*.color9:       #FF3334
+
+! Green + Bright Green
+*.color2:       #99cc99
+*.color10:      #9ec400
+
+! Yellow (Orange) + Bright Yellow (Yellow)
+*.color3:       #f99157
+*.color11:      #ffcc66
+
+! Blue + Bright Blue
+*.color4:       #6699cc
+*.color12:      #6699cc
+
+! Magenta (Purple) + Bright Magenta
+*.color5:       #cc99cc
+*.color13:      #b777e0
+
+! Cyan (Aqua) + Bright Cyan
+*.color6:       #66cccc
+*.color14:      #54ced6
+
+! Light Grey (Selection) + White (Current Line)
+*.color7:       #515151
+*.color15:      #393939
