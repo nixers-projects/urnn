@@ -31,16 +31,16 @@ main(int argc, char* argv[])
 		const unsigned int num_input = 3*10; // 3 times 10 most used colors
 		const unsigned int num_output = 3*18; // 3 times the 18 colors used in a colorscheme
 		const unsigned int num_layers = 3;
-		const unsigned int num_neurons_hidden = 3;
+		const unsigned int num_neurons_hidden = 4;
 		const float desired_error = (const float) 0.003; // be kinda tolerant
-		const unsigned int max_epochs = 500000; // allow for a long run
-		const unsigned int epochs_between_reports = 10000;
+		const unsigned int max_epochs = 1000000; // allow for a long run
+		const unsigned int epochs_between_reports = 30000;
 
 		struct fann *ann = fann_create_standard(num_layers, num_input,
 				num_neurons_hidden, num_output);
 
-		fann_set_activation_function_hidden(ann, FANN_SIGMOID_SYMMETRIC);
-		fann_set_activation_function_output(ann, FANN_SIGMOID_SYMMETRIC);
+		//fann_set_activation_function_hidden(ann, FANN_SIGMOID_SYMMETRIC);
+		//fann_set_activation_function_output(ann, FANN_SIGMOID_SYMMETRIC);
 		fann_set_activation_steepness_output(ann, 0.2);
 
 		fann_train_on_file(
