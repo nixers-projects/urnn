@@ -57,6 +57,7 @@ This will be the actual network, using fann libraries, written in C.
 ![1](http://pub.iotek.org/p/gguePe7.png)
 ![2](http://pub.iotek.org/p/84nIYJl.png)
 ![3](http://pub.iotek.org/p/CG8ZGqZ.png)
+![4](http://pub.iotek.org/p/wG8Fd90.png)
 
 
 [Blog post explanation](http://venam.nixers.net/blog/programming/2015/07/06/project-summer-july-2015.html)
