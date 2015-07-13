@@ -1,0 +1,30 @@
+
+ 39 !SCHEME *edited be me hehe* BY THE GOD Thayer
+ 40 ! -- by Thayer -- !
+ 41 *foreground:#a0a0a0
+ 42 *background:#1b1d1e
+ 43 ! !molokai inspired colors
+ 44 ! !black
+ 45 *color0:    #1b1d1e
+ 46 *color8:    #505354
+ 47 ! !red
+ 48 *color1:    #f92672
+ 49 *color9:    #B52E2F
+ 50 ! !green
+ 51 *color2:    #82b414
+ 52 *color10:   #b6e354
+ 53 ! !yellow
+ 54 *color3:    #fd971f
+ 55 *color11:  #95C32E
+ 56 ! !blue
+ 57 *color4:    #56c2d6
+ 58 *color12:   #E5BB8B
+ 59 ! !magenta
+ 60 *color5:    #8c54fe
+ 61 *color13:   #DC8E3A
+ 62 ! !cyan
+ 63 *color6:    #465457
+ 64 *color14:   #899ca1
+ 65 ! !white
+ 66 *color7:    #ccccc6
+ 67 *color15:   #f8f8f2
