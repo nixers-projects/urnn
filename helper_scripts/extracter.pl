@@ -31,18 +31,27 @@ for (my $i = 0; $i < scalar(@images); $i ++) {
 	}
 	print "[$nb]: \n";
 	print "Converting colorscheme to specific format\n";
+	if (-f "../outputs/$nb.resources.data") {
+		qx#rm ../outputs/$nb.resources.data#;
+	}
 	qx#
 		cat $resources[$i] |
 		../helper_scripts/extract_hex_from_xresources.pl -s |
 		../helper_scripts/convert_hex_to_val.pl -s 1 > ../outputs/$nb.resources.data
 	#;
 	print "Extracting 10 most used colors from background\n";
+	if (-f "../outputs/$nb.images.data") {
+		qx#rm ../outputs/$nb.images.data#;
+	}
+	#
+	# cat $images[$i] |
+	# ../convert/convert 30 |
+	# sort -k 2 -g -r |
+	# cut -d ' ' -f1 |
+	# head -n 10 |
+	#
 	qx#
-		cat $images[$i] |
-		../convert/convert 30 |
-		sort -k 2 -g -r |
-		cut -d ' ' -f1 |
-		head -n 10 |
+		../convert/colors -en 10 $images[$i] |
 		../helper_scripts/convert_hex_to_val.pl -s 1 > ../outputs/$nb.images.data
 	#;
 }

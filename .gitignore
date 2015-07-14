@@ -1,1 +1,5 @@
 *.swp
+convert/colors
+convert/convert
+network/urnn_run
+network/urnn_train
