@@ -6,25 +6,18 @@
 *foreground:       #746C48
 
 *color0:           #343436
-*color8:           #3C4537
-
 *color1:           #473C37
-*color9:           #544639
-
 *color2:           #6A6E39
-*color10:          #6C9242
-
 *color3:           #6D533A
-*color11:          #735E45
-
 *color4:           #8F6F4A
-*color12:          #99663A
-
 *color5:           #A0883A
-*color13:          #A97749
-
 *color6:           #AD8F62
-*color14:          #C47B40
-
 *color7:           #CD9561
+*color8:           #3C4537
+*color9:           #544639
+*color10:          #6C9242
+*color11:          #735E45
+*color12:          #99663A
+*color13:          #A97749
+*color14:          #C47B40
 *color15:          #CFBDA4
