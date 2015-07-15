@@ -8,7 +8,9 @@ image, which might then be used as background.
 say we have a pixel with the rgb value of (255, 120, 70). to display this information in a format that the neural network can understand, we have to convert it to 3 floats. each consist of the color/255 (max value).
 
 255/255 = 1.00000000
+
 120/255 = 0.47058823
+
 70/255  = 0.27450980
 
 so there you have it. our pixel is represented by 1.00000000 0.47058823 0.27450980
