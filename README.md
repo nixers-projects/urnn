@@ -3,54 +3,15 @@
 A neural network to smartly create coherent terminal colorschemes based on an
 image, which might then be used as background.
 
-### process
+### converting pixel to raw data (for vompatti)
 
-* scrape images (png only)
+say we have a pixel with the rgb value of (255, 120, 70). to display this information in a format that the neural network can understand, we have to convert it to 3 floats. each consist of the color/255 (max value).
 
-* use convert/ tool to convert all the images in images/ to a data.train file 
+255/255 = 1.00000000
+120/255 = 0.47058823
+70/255  = 0.27450980
 
-* use the data.train file to train the network
-
-### convert/
-
-This tool will convert all the images in images/ to a data.train file that follows the format specified by fann.
-
-````
-num_data_sets input_vars output_vars
-input_var input_var
-output_var
-input_var input_var
-output_var
-input_var input_var
-output_var
-````
-
-To express a color we'll be using 3 neurons, each having a ratio of red, green, and blue
-
-````
-#bcbcaf = 0.737255 0.737255 0.686275
-````
-
-Thus the input will consist of 3 times the X most used colors in the image and
-the output will consist of 54 neurons, 3 times the 18 colors used in a terminal
-colorscheme.
-
-### images/
-
-This tool can be written in whatever, we just need to figure out the best place to scrape images from and record the data we want. 
-
-### network/
-
-This will be the actual network, using fann libraries, written in C.
-
-### what's next
-
-* write convert/
-
-* scrape images
-
-* profit
-
+so there you have it. our pixel is represented by 1.00000000 0.47058823 0.27450980
 
 ### Examples
 
