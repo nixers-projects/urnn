@@ -17,10 +17,24 @@ so there you have it. our pixel is represented by 1.00000000 0.47058823 0.274509
 
 ### Examples
 
+Done with data that wasn't in the training set
+
+####Normal Way (wallpaper -> colorscheme)
+
 ![1](http://pub.iotek.org/p/gguePe7.png)
 ![2](http://pub.iotek.org/p/84nIYJl.png)
 ![3](http://pub.iotek.org/p/CG8ZGqZ.png)
 ![4](http://pub.iotek.org/p/wG8Fd90.png)
+
+####Reverse Way (colorscheme -> wallpaper) (Still WIP to generate backgrounds)
+
+![5](http://pub.iotek.org/p/f8G90AY.png)
+
+With a background generated from [this website](http://stripedbgs.com/)
+
+![6](http://pub.iotek.org/p/PCLZqfw.png)
+
+With a background generated from [this website](http://www.pixelknete.de/dotter/index.php)
 
 
 [Blog post explanation](http://venam.nixers.net/blog/programming/2015/07/06/project-summer-july-2015.html)
