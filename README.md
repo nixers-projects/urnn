@@ -24,3 +24,12 @@ so there you have it. our pixel is represented by 1.00000000 0.47058823 0.274509
 
 
 [Blog post explanation](http://venam.nixers.net/blog/programming/2015/07/06/project-summer-july-2015.html)
+
+
+### TODO
+
+* Get more data for the training
+* Test multiple color extracters and parameters for the training
+* Build the network in the opposite direction, from colorscheme to wallpaper
+* A procedural wallpaper generation/fetcher based on colors (for when the network is used in the opposite way)
+* Easy wrappers for all the mini-tools written
