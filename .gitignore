@@ -3,3 +3,7 @@ convert/colors
 convert/convert
 network/urnn_run
 network/urnn_train
+network/urnn_train_reverse
+network/urnn_run_reverse
+network/out.reverse
+network/out
