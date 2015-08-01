@@ -1,8 +1,8 @@
 !! Genius_UI Terminal Colours
 
 !! BASE
-!*background: #
-!*foreground: #
+*background: #212121
+*foreground: #e6e3c6
 !*cursorColor: #
 !*colorBD: #
 !*colorIT: #
@@ -17,7 +17,7 @@
 *color9: #e76e66
 
 !! GREEN dark/light
-*color02: #166549
+*color2: #166549
 *color10:	#1b7e5a
 
 !! YELLOW dark/light

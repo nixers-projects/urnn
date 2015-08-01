@@ -37,7 +37,7 @@ for (my $i = 0; $i < scalar(@images); $i ++) {
 	qx#
 		cat $resources[$i] |
 		../helper_scripts/extract_hex_from_xresources.pl -s |
-		../helper_scripts/convert_hex_to_val.pl -s 1 > ../outputs/$nb.resources.data
+		../helper_scripts/convert_hex_to_val_2.pl -s 1 > ../outputs/$nb.resources.data
 	#;
 	print "Extracting 10 most used colors from background\n";
 	if (-f "../outputs/$nb.images.data") {
@@ -52,6 +52,6 @@ for (my $i = 0; $i < scalar(@images); $i ++) {
 	#
 	qx#
 		../convert/colors -en 10 $images[$i] |
-		../helper_scripts/convert_hex_to_val.pl -s 1 > ../outputs/$nb.images.data
+		../helper_scripts/convert_hex_to_val_2.pl -s 1 > ../outputs/$nb.images.data
 	#;
 }
