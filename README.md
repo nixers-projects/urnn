@@ -43,9 +43,9 @@ With a background generated from [this website](http://www.pixelknete.de/dotter/
 
 ### TODO
 
-* Turn the input of the network between [-1, 1] so that the training is faster
-* Get more data for the training
-* Test multiple color extracters and parameters for the training
-* Build the network in the opposite direction, from colorscheme to wallpaper
-* A procedural wallpaper generation/fetcher based on colors (for when the network is used in the opposite way)
-* Easy wrappers for all the mini-tools written
+* [x] Turn the input of the network between [-1, 1] so that the training is faster
+* [ ] Get more data for the training
+* [ ] Test multiple color extracters and parameters for the training
+* [x] Build the network in the opposite direction, from colorscheme to wallpaper
+* [ ] A procedural wallpaper generation/fetcher based on colors (for when the network is used in the opposite way)
+* [ ] Easy wrappers for all the mini-tools written
