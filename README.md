@@ -41,6 +41,7 @@ With a background generated from [this website](http://www.pixelknete.de/dotter/
 [Blog post explanation](http://venam.nixers.net/blog/programming/2015/07/06/project-summer-july-2015.html)
 
 
+
 ### TODO
 
 * [x] Turn the input of the network between [-1, 1] so that the training is faster
