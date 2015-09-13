@@ -47,7 +47,7 @@ With a background generated from [this website](http://www.pixelknete.de/dotter/
 
 1. Fetch a wallpaper from the internet and set it as background
 2. Make sure they are all in .png format (You can use imagemagick "convert" tool to do that)
-3. Go into the network dir
+3. Go into the network dir (from now on it is assumed you are in that dir)
 4. Compile the programs `cc urnn_train.c -o urnn_train -l fann -l m` and `cc urnn_run.c -o urnn_run -l fann -l m `
 5. Train the network `./urnn_train urnn.data urnn.trained`
 6. Run the wrapper script with your PNG image as argument `sh test2.sh yourimage.png`
@@ -59,7 +59,8 @@ With a background generated from [this website](http://www.pixelknete.de/dotter/
 12. Run the `add_to_output.sh` script with, as argument, the next number of the training set (check the outputs directory). For example `add_to_output.sh 62`
 13. Put the new theme in a file
 14. Run the `add_resources_to_output.sh` with as arguments the file just created and the next training set number. For example `./add_resources_to_output.sh new_theme.resources 61`
-15. Go to step 1
+15. Update the training set sample by running `../helper_scripts/prepare_inputs.pl > urnn.data`
+16. Go to step 1
 
 
 ### TODO
