@@ -1,0 +1,35 @@
+.Dd June 11, 2015
+.Dt COLORS 1
+.Os
+.Sh NAME
+.Nm colors
+.Nd extract colors from pictures
+.Sh SYNOPSIS
+.Nm colors
+.Op Fl erv
+.Op Fl h | Fl p
+.Op Fl n Ar clusters
+.Ar file
+.Sh DESCRIPTION
+.Nm
+is a simple tool to extract colors from pictures.  By default it selects
+initial clusters based on greyscale
+steps.
+.Sh OPTIONS
+.Bl -tag -width "-n clusters"
+.It Fl e
+Print empty clusters as well.
+.It Fl r
+Randomize cluster selection.
+.It Fl v
+Be verbose.
+.It Fl h
+Select initial clusters from the hue domain.
+.It Fl p
+Select initial clusters from the image pixel space.
+.It Fl n Ar clusters
+Set the number of clusters.  It defaults to 8.
+.El
+.Sh AUTHORS
+.An Dimitris Papastamos Aq Mt sin@2f30.org ,
+.An Lazaros Koromilas Aq Mt lostd@2f30.org .

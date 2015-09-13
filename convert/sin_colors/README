@@ -1,0 +1,12 @@
+What is it?
+===========
+
+A simple program to extract colors from PNG files.  It is similar to
+strings(1) but for pictures.  For a given input[0] file it outputs a
+colormap[1] to stdout.
+
+    # ./colors -p input.png | ./bin/hex2html > output.html
+
+
+[0] http://saturn.2f30.org/colors/input.png
+[1] http://saturn.2f30.org/colors/output.html
