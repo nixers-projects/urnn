@@ -48,7 +48,7 @@ With a background generated from [this website](http://www.pixelknete.de/dotter/
 1. Fetch a wallpaper from the internet and set it as background
 2. Make sure they are all in .png format (You can use imagemagick "convert" tool to do that)
 3. Go into the network dir (from now on it is assumed you are in that dir)
-4. Compile the programs `cc urnn_train.c -o urnn_train -l fann -l m` and `cc urnn_run.c -o urnn_run -l fann -l m `
+4. Compile the programs `cc urnn_train.c -o urnn_train -l fann -l m` and `cc urnn_run.c -o urnn_run -l fann -l m -std=c99`
 5. Train the network `./urnn_train urnn.data urnn.trained`
 6. Run the wrapper script with your PNG image as argument `sh test2.sh yourimage.png`
 7. Replace your .Xressources colors with the ones of the output (don't forget the backup)
