@@ -1,4 +1,6 @@
-### urnn
+## urnn
+
+This repo is a fork of [urnn](https://github.com/iotek/urnn) that has been run through bfg cleaner. Another goal of this repo is to focus on making urnn easy to use and contribute.
 
 A neural network to smartly create coherent terminal colorschemes based on an
 image, which might then be used as background.
