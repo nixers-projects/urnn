@@ -1,51 +1,52 @@
 ## urnn
+(unix ricing neural network)
 
-This repo is a fork of [urnn](https://github.com/iotek/urnn) that has been run through bfg cleaner. Another goal of this repo is to focus on making urnn easy to use and contribute.
+[This is a fork that is currently a wip]
 
-A neural network to smartly create coherent terminal colorschemes based on an
-image, which might then be used as background.
+A neural network to smartly create coherent terminal colorschemes based on an image. In the future this project may also have the feature to turn colorschemes into generated background images.
 
-### converting pixel to raw data (for vompatti)
+### Examples (Colors generated from wallpapers):
 
-say we have a pixel with the rgb value of (255, 120, 70). to display this information in a format that the neural network can understand, we have to convert it to 3 floats. each consist of the color/255 (max value).
+![1](http://pub.iotek.org/p/84nIYJl.png)
+![2](http://pub.iotek.org/p/jL2NNE5.png)
+
+
+### Repo layout
+
+colors
+- Programs for extracting colors from png images in different ways.
+
+scripts
+- Scripts for misc tasks(using the color extractors, parsing .Xresources files, ...)
+
+network
+- Folder containing the meat of this project, programs and scripts to train and use the neural network, as well as extract data and put it in the correct form to use.
+
+inputs
+- Git submodule that points to the [urnnputs](https://github.com/neeasade/urnnputs), containing images and resources file to extract data from to use to train the neural network.
+
+outputs
+- The extracted data from the inputs folder in a form suitable used to train urnn(explained below)
+
+#### output data (color representation)
+
+Colors are converted to a value that is between 0 and 1, for speed/use with [fann](https://github.com/libfann/fann).
+
+for example, say we have a pixel with the rgb value of (255, 120, 70). to display this information in a format that the neural network can understand, we have to convert it to 3 floats. each consist of the color/255 (max value).
 
 255/255 = 1.00000000
-
 120/255 = 0.47058823
-
 70/255  = 0.27450980
 
 so there you have it. our pixel is represented by 1.00000000 0.47058823 0.27450980
 
-### Examples
+#### related links
+- [Venams blog post](http://venam.nixers.net/blog/programming/2015/07/06/project-summer-july-2015.html)
+- [libfann](https://github.com/libfann/fann)
 
-Done with data that wasn't in the training set
-
-####Normal Way (wallpaper -> colorscheme)
-
-![1](http://pub.iotek.org/p/gguePe7.png)
-![2](http://pub.iotek.org/p/84nIYJl.png)
-![3](http://pub.iotek.org/p/CG8ZGqZ.png)
-![4](http://pub.iotek.org/p/wG8Fd90.png)
-![5](http://pub.iotek.org/p/jL2NNE5.png)
-
-####Reverse Way (colorscheme -> wallpaper) (Still WIP to generate backgrounds)
-
-![5](http://pub.iotek.org/p/f8G90AY.png)
-
-With a background generated from [this website](http://stripedbgs.com/)
-
-![6](http://pub.iotek.org/p/PCLZqfw.png)
-
-With a background generated from [this website](http://www.pixelknete.de/dotter/index.php)
-
-
-[Blog post explanation](http://venam.nixers.net/blog/programming/2015/07/06/project-summer-july-2015.html)
-
-
+**Everything from here down I will revaluate after I finish restructure**
 
 ####How To Contribute
-
 
 1. Fetch a wallpaper from the internet and set it as background
 2. Make sure they are all in .png format (You can use imagemagick "convert" tool to do that)
