@@ -1,0 +1,3 @@
+[submodule "inputs"]
+    path = inputs
+    url = git@github.com:neeasade/urnnputs.git
