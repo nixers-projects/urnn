@@ -36,8 +36,7 @@ function colors
 
   # Is this a png file?
   if ! file "$file" | grep "PNG image data"; then
-    echo "File is not png, making a tmp copy to /tmp/urnn.png"
-    type convert >/dev/null 2>&1 || { echo >&2 "Unable to convert image to png file without imagemagick package."; exit 1; }
+    type convert >/dev/null 2>&1 || { echo >&2 "File was not png. Unable to convert image to png file without imagemagick package."; exit 1; }
     convert "$file" "/tmp/urnn.png"
     file="/tmp/urnn.png"
   fi
