@@ -30,19 +30,27 @@ function refresh
 
 function colors
 {
-  [[ -z "$2" ]] && usage && exit 1
-  [[ ! -f "$2" ]] && echo "ERR: could not find $2" && exit 1
+  file="$1"
+  [[ -z "$file" ]] && usage && exit 1
+  [[ ! -f "$file" ]] && echo "ERR: could not find $file" && exit 1
+
+  # Is this a png file?
+  if ! file "$file" | grep "PNG image data"; then
+    echo "File is not png, making a tmp copy to /tmp/urnn.png"
+    type convert >/dev/null 2>&1 || { echo >&2 "Unable to convert image to png file without imagemagick package."; exit 1; }
+    convert "$file" "/tmp/urnn.png"
+    file="/tmp/urnn.png"
+  fi
 
   # ghetto
   cd network
-  ./test2.sh "$2"
+  ./test2.sh "$file"
 }
 
 # Make things relative to dir this script resides in
 cd $(dirname $0)
-echo $(dirname $0)
 
 valid="retrain refresh regen colors"
 [[ -z "$1" ]] && usage
-[[ $valid =~ $1 ]] && $1 || usage
+[[ $valid =~ $1 ]] && $1 $2 || usage
 
