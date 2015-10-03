@@ -4,12 +4,13 @@
 # planned:
 function usage
 {
-  echo "usage: $0 [retrain|regen|refresh|colors] (file)"
+  echo "usage: $0 [retrain|regen|refresh|colors] (file) (file)"
   echo "       retrain          retrain urnn with the current dataset"
   # This will eventually have a (convert/colors) arg, for now using colors only.
   echo "       regen            regenerate ALL urnn data from inputs (HEAVY operation)"
   echo "       refresh          check for inputs that aren't in the dataset and add them"
-  echo "       colors (file)    generate xresources to STDOUT using current training result"
+  echo "       colors (img)     generate xresources to STDOUT using current training result"
+  echo "       add (img) (Xres) generate and add urnn data about "
 }
 
 function retrain
@@ -20,12 +21,12 @@ function retrain
 
 function regen
 {
-  echo "placeholder"
+  echo "not implemented"
 }
 
 function refresh
 {
-  echo "placeholder"
+  echo "not implemented"
 }
 
 function colors
@@ -46,10 +47,20 @@ function colors
   ./test2.sh "$file"
 }
 
+# Add inputs to the dataset folder.
+# add (image file) (xresources file)
+# extracts colors from png and xresources and adds to the dataset folder.
+function add
+{
+  echo "not implemented"
+  # if submodule exists, add to staging folder
+  # else, copy to inputs_extra
+}
+
 # Make things relative to dir this script resides in
 cd $(dirname $0)
 
-valid="retrain refresh regen colors"
+valid="retrain refresh regen colors add"
 [[ -z "$1" ]] && usage
-[[ $valid =~ $1 ]] && $1 $2 || usage
+[[ $valid =~ $1 ]] && $1 $2 $3 || usage
 

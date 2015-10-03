@@ -1,9 +1,7 @@
-## urnn
-(unix ricing neural network)
-
+## urnn (unix ricing neural network)
 [This is a fork that is currently a wip]
 
-A neural network to smartly create coherent terminal colorschemes based on an image. In the future this project may also have the feature to turn colorschemes into generated background images.
+A neural network to smartly create coherent terminal colorschemes based on an image.
 
 ### Examples (Colors generated from wallpapers):
 
@@ -21,7 +19,7 @@ network | Folder containing the meat of this project, programs and scripts to tr
 inputs 	| Git submodule that points to the [urnnputs](https://github.com/neeasade/urnnputs), containing images and resources file to extract data from to use to train the neural network.
 dataset | The extracted data from the inputs folder in a form suitable used to train urnn(explained below)
 
-#### dataset contents(color representation)
+#### Dataset contents(color representation)
 
 Colors are converted to a value that is between 0 and 1, for speed/use with [fann](https://github.com/libfann/fann).
 
@@ -35,13 +33,33 @@ for example, say we have a pixel with the rgb value of (255, 120, 70). to displa
 
 so there you have it. our pixel is represented by 1.00000000 0.47058823 0.27450980
 
-#### related links
+### TODO
+
+* [x] Turn the input of the network between [-1, 1] so that the training is faster
+* [ ] Get more data for the training
+* [ ] Test multiple color extracters and parameters for the training
+* [ ] Easy wrappers for all the mini-tools written
+
+### How To Contribute
+
+Have inputs(pairs of xresources and walls) that you want to add?
+If you just want to submit them for addition to the inputs, see https://github.com/neeasade/urnnputs#contributing
+
+[not implemented]If you want to test one or more here to see what kind of effect you can have on the network:
+``` bash
+$ urnn.sh add /some/image.png /test/.Xresouces
+$ urnn.sh retrain
+```
+And then you will have a trained set including your inputs(you might retrain several times, they can vary in quality)
+
+To test out the effects of them here, you will
+
+#### Related links
 - [Venams blog post](http://venam.nixers.net/blog/programming/2015/07/06/project-summer-july-2015.html)
 - [libfann](https://github.com/libfann/fann)
 
-**Everything from here down I will revaluate after I finish restructure**
 
-####How To Contribute
+**Everything from here down I will revaluate after I finish restructure**
 
 1. Fetch a wallpaper from the internet and set it as background
 2. Make sure they are all in .png format (You can use imagemagick "convert" tool to do that)
@@ -61,11 +79,3 @@ so there you have it. our pixel is represented by 1.00000000 0.47058823 0.274509
 16. Go to step 1
 
 
-### TODO
-
-* [x] Turn the input of the network between [-1, 1] so that the training is faster
-* [ ] Get more data for the training
-* [ ] Test multiple color extracters and parameters for the training
-* [x] Build the network in the opposite direction, from colorscheme to wallpaper
-* [ ] A procedural wallpaper generation/fetcher based on colors (for when the network is used in the opposite way)
-* [ ] Easy wrappers for all the mini-tools written
