@@ -15,8 +15,8 @@ extract the data from images and colorschemes - still a WIP
 =cut
 
 
-my @images = glob "../images/*.png";
-my @resources = glob "../images/*.resources";
+my @images = glob "../inputs/data/*.png";
+my @resources = glob "../inputs/data/*.resources";
 
 if (scalar(@images) != scalar(@resources)) {
 	print "Not every images has an associated colorscheme";
@@ -26,7 +26,7 @@ for (my $i = 0; $i < scalar(@images); $i ++) {
 	my ($nb) = $images[$i] =~ /(\d+)/;
 	my ($nb2) = $resources[$i] =~ /(\d+)/;
 	if ($nb ne $nb2) {
-		print "There are some stuffs wrong in the images directory\n";
+		print "There are some stuffs wrong in the inputs directory\n";
 		exit 1;
 	}
 	print "[$nb]: \n";

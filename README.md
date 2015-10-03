@@ -19,9 +19,9 @@ colors 	| Programs for extracting colors from png images in different ways.
 scripts | Scripts for misc tasks(using the color extractors, parsing .Xresources files, ...)
 network | Folder containing the meat of this project, programs and scripts to train and use the neural network, as well as extract data and put it in the correct form to use.
 inputs 	| Git submodule that points to the [urnnputs](https://github.com/neeasade/urnnputs), containing images and resources file to extract data from to use to train the neural network.
-outputs | The extracted data from the inputs folder in a form suitable used to train urnn(explained below)
+dataset | The extracted data from the inputs folder in a form suitable used to train urnn(explained below)
 
-#### output data (color representation)
+#### dataset contents(color representation)
 
 Colors are converted to a value that is between 0 and 1, for speed/use with [fann](https://github.com/libfann/fann).
 

@@ -15,8 +15,8 @@ cd network
 cc urnn_train.c -o urnn_train -l fann -l m
 cc urnn_run.c -o urnn_run -l fann -l m -std=c99
 
-./urnn_train urnn.data urnn.trained
+# ./urnn_train urnn.data urnn.trained
 
-cd ../convert/sin_colors
+cd ../colors/sin_colors
 make clean
 make
