@@ -1,5 +1,4 @@
 ## urnn (unix ricing neural network)
-[This is a fork that is currently a wip]
 
 A neural network to smartly create coherent terminal colorschemes based on an image.
 
