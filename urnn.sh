@@ -76,8 +76,8 @@ function colors
 # extracts colors from png and xresources and adds to the dataset folder.
 function add
 {
-  image_file="$1"
-  xres_file="$2"
+  image_file="$file_rel/$1"
+  xres_file="$file_rel/$2"
   [[ -z "$image_file" ]] && usage && exit 1
   [[ -z "$xres_file" ]] && usage && exit 1
   [[ ! -f "$image_file" ]] && echo "ERR: could not find $image_file" && exit 1
@@ -122,6 +122,7 @@ function urnnputs
 }
 
 # Make things relative to dir this script resides in
+file_rel=`pwd`
 cd $(dirname $0)
 
 valid="retrain refresh regen colors add addinput"
