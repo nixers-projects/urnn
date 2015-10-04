@@ -13,8 +13,8 @@ sub HELP {
 my $first_line = <stdin>;
 HELP unless $first_line;
 
-my ($nb_lines, $nb_inputs, $nb_outputs) = ($first_line =~ /(\d+) (\d+) (\d+)/) or die HELP;
-print "$nb_lines $nb_outputs $nb_inputs\n";
+my ($nb_lines, $nb_inputs, $nb_dataset) = ($first_line =~ /(\d+) (\d+) (\d+)/) or die HELP;
+print "$nb_lines $nb_dataset $nb_inputs\n";
 
 #reverse every other 2 lines
 while (my $in_line = <stdin>) {

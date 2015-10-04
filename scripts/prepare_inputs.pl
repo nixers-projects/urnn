@@ -14,8 +14,8 @@ Prepare the input for the neural network training - still a WIP
 
 =cut
 
-my @images = glob "../outputs/*.images.data";
-my @resources = glob "../outputs/*.resources.data";
+my @images = glob "../dataset/*.images.data";
+my @resources = glob "../dataset/*.resources.data";
 my $number_of_inputs = 0;
 my $final_string = "";
 
@@ -28,7 +28,7 @@ for (my $i = 0; $i < scalar(@images); $i ++) {
 	my ($nb) = $images[$i] =~ /(\d+)/;
 	my ($nb2) = $resources[$i] =~ /(\d+)/;
 	if ($nb ne $nb2) {
-		print STDERR "There are some stuffs wrong in the outputs dir\n";
+		print STDERR "There are some stuffs wrong in the dataset dir\n";
 		exit 1;
 	}
 	my $nb_col = qx#cat $images[$i] | xargs -n3 | wc -l#;
