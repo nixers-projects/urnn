@@ -52,37 +52,15 @@ so there you have it. our pixel is represented by 1.00000000 0.47058823 0.274509
 Have inputs(pairs of xresources and walls) that you want to add?
 If you just want to submit them for addition to the inputs, see https://github.com/neeasade/urnnputs#contributing
 
-[not implemented]If you want to test one or more here to see what kind of effect you can have on the network:
+If you want to test one or more here to see what kind of effect you can have on the network:
 ``` bash
 $ urnn.sh add /some/image.png /test/.Xresouces
+$ urnn.sh add /some/other/image.png /second/.Xresouces
+$ urnn.sh refresh
 $ urnn.sh retrain
 ```
-And then you will have a trained set including your inputs(you might retrain several times, they can vary in quality)
-
-To test out the effects of them here, you will
+You will then have a trained set including your inputs, and could test out the `urnn.sh colors` command and see that kind of effect you had. If any of the outputs are desirable, consider submitting a pull request with them ;)
 
 #### Related links
 - [Venams blog post](http://venam.nixers.net/blog/programming/2015/07/06/project-summer-july-2015.html)
 - [libfann](https://github.com/libfann/fann)
-
-
-**Everything from here down I will revaluate after I finish restructure**
-
-1. Fetch a wallpaper from the internet and set it as background
-2. Make sure they are all in .png format (You can use imagemagick "convert" tool to do that)
-3. Go into the network dir (from now on it is assumed you are in that dir)
-4. Compile the programs `cc urnn_train.c -o urnn_train -l fann -l m` and `cc urnn_run.c -o urnn_run -l fann -l m -std=c99`
-5. Train the network `./urnn_train urnn.data urnn.trained`
-6. Run the wrapper script with your PNG image as argument `sh test2.sh yourimage.png`
-7. Replace your .Xressources colors with the ones of the output (don't forget the backup)
-8. Update the resources `xrdb -load ~/.Xresources`
-9. Open a new terminal and make sure the theme is good
-10. If the theme is bad repeat from step 5 by retraining the network
-11. Compile `sin_colors` script (if not already compiled)
-12. Run the `add_to_output.sh` script with, as argument, the next number of the training set (check the outputs directory). For example `add_to_output.sh 62`
-13. Put the new theme in a file
-14. Run the `add_resources_to_output.sh` with as arguments the file just created and the next training set number. For example `./add_resources_to_output.sh new_theme.resources 61`
-15. Update the training set sample by running `../helper_scripts/prepare_inputs.pl > urnn.data`
-16. Go to step 1
-
-
