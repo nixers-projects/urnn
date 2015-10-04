@@ -21,11 +21,22 @@ function retrain
 
 function regen
 {
-  echo "not implemented"
+  # todo: check for git submodule
+  #       Account for staging folder in urnnputs
+
+  # clear out the current dataset.
+  cd dataset
+  rm *.data
+
+  # Make new one from input/data.
+  cd ../scripts
+  ./extracter.pl
 }
 
 function refresh
 {
+  # count inputs + 1 vs dataset.
+  # todo: account for staging folder.
   echo "not implemented"
 }
 
@@ -52,7 +63,25 @@ function colors
 # extracts colors from png and xresources and adds to the dataset folder.
 function add
 {
+  image_file="$1"
+  xres_file="$2"
+  [[ -z "$image_file" ]] && usage && exit 1
+  [[ -z "$xres_file" ]] && usage && exit 1
+  [[ ! -f "$image_file" ]] && echo "ERR: could not find $image_file" && exit 1
+
+  # Is this a png image_file?
+  if ! image_file "$image_file" | grep "PNG image data"; then
+    type convert >/dev/null 2>&1 || { echo >&2 "image_file was not png. Unable to convert image to png image_file without imagemagick package."; exit 1; }
+    convert "$image_file" "/tmp/urnn.png"
+    image_file="/tmp/urnn.png"
+  fi
+
+  cd scripts
+  # Xresources
+  #./extract_hex_from_resources.pl "$xres_file" | ./convert_hex_to_val_2.pl -s 1
+
   echo "not implemented"
+
   # if submodule exists, add to staging folder
   # else, copy to inputs_extra
 }
@@ -62,5 +91,5 @@ cd $(dirname $0)
 
 valid="retrain refresh regen colors add"
 [[ -z "$1" ]] && usage
-[[ $valid =~ $1 ]] && $1 $2 $3 || usage
+[[ $valid =~ $1 ]] && $@ || usage
 

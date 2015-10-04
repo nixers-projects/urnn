@@ -31,17 +31,17 @@ for (my $i = 0; $i < scalar(@images); $i ++) {
 	}
 	print "[$nb]: \n";
 	print "Converting colorscheme to specific format\n";
-	if (-f "../outputs/$nb.resources.data") {
-		qx#rm ../outputs/$nb.resources.data#;
+	if (-f "../dataset/$nb.resources.data") {
+		qx#rm ../dataset/$nb.resources.data#;
 	}
 	qx#
 		cat $resources[$i] |
-		../helper_scripts/extract_hex_from_xresources.pl -s |
-		../helper_scripts/convert_hex_to_val_2.pl -s 1 > ../outputs/$nb.resources.data
+		../scripts/extract_hex_from_xresources.pl -s |
+		../scripts/convert_hex_to_val_2.pl -s 1 > ../dataset/$nb.resources.data
 	#;
 	print "Extracting 10 most used colors from background\n";
-	if (-f "../outputs/$nb.images.data") {
-		qx#rm ../outputs/$nb.images.data#;
+	if (-f "../dataset/$nb.images.data") {
+		qx#rm ../dataset/$nb.images.data#;
 	}
 	#
 	# cat $images[$i] |
@@ -51,7 +51,7 @@ for (my $i = 0; $i < scalar(@images); $i ++) {
 	# head -n 10 |
 	#
 	qx#
-		../convert/colors -en 10 $images[$i] |
-		../helper_scripts/convert_hex_to_val_2.pl -s 1 > ../outputs/$nb.images.data
+		../colors/sin_colors/colors -en 10 $images[$i] |
+		../scripts/convert_hex_to_val_2.pl -s 1 > ../dataset/$nb.images.data
 	#;
 }
