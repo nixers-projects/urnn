@@ -8,6 +8,13 @@ A neural network to smartly create coherent terminal colorschemes based on an im
 ![1](http://pub.iotek.org/p/84nIYJl.png)
 ![2](http://pub.iotek.org/p/jL2NNE5.png)
 
+### How do I use this?
+This project depends on [libfann](https://github.com/libfann/fann). After you have that and clone:
+``` bash
+$ ./setup.sh
+$ ./urnn.sh colors /some/file.png
+```
+And colors will be printed to STDOUT in an Xresources format. If you the results you get are meh, you can retrain urnn with `./urnn.sh retrain`. There are other options as well.
 
 ### Repo layout
 

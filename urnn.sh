@@ -21,10 +21,13 @@ function retrain
 
 function regen
 {
-  # todo: check for git submodule
-  #       Account for staging folder in urnnputs
+  if [ ! -d inputs/data ]; then
+    echo "no input/data directory found, pulling urnnputs.."
+    git submodule init
+    git submodule update
+  fi
 
-  # clear out the current dataset.
+ # clear out the current dataset.
   cd dataset
   rm *.data
 
@@ -35,6 +38,12 @@ function regen
 
 function refresh
 {
+  if [ ! -d inputs/data ]; then
+    echo "no input/data directory found, pulling urnnputs.."
+    git submodule init
+    git submodule update
+  fi
+
   # count inputs + 1 vs dataset.
   # todo: account for staging folder.
   echo "not implemented"
