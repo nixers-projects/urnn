@@ -60,7 +60,7 @@ function colors
   [[ ! -f "$file" ]] && echo "ERR: could not find $file" && exit 1
 
   # Is this a png file?
-  if ! file "$file" | grep "PNG image data"; then
+  if ! file "$file" | grep "PNG image data" > /dev/null; then
     type convert >/dev/null 2>&1 || { echo >&2 "File was not png. Unable to convert image to png file without imagemagick package."; exit 1; }
     convert "$file" "/tmp/urnn.png"
     file="/tmp/urnn.png"
