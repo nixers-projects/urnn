@@ -1,8 +1,7 @@
 *.swp
 *.o
-convert/colors
-convert/sin_colors/colors
-convert/convert
+colors/sin_colors/colors
+colors/convert/convert
 network/urnn_run
 network/urnn_train
 network/urnn_train_reverse
