@@ -6,6 +6,23 @@ A neural network to smartly create coherent terminal colorschemes based on an im
 
 ![1](http://pub.iotek.org/p/84nIYJl.png)
 ![2](http://pub.iotek.org/p/jL2NNE5.png)
+![3](http://pub.iotek.org/p/CG8ZGqZ.png)
+![4](http://pub.iotek.org/p/wG8Fd90.png)
+![5](http://pub.iotek.org/p/vhTj9zq.png)
+![6](http://pub.iotek.org/p/nBMMXv4.png)
+![7](http://pub.iotek.org/p/QPDnQzb.png)
+![8](http://pub.iotek.org/p/xzUveTc.png)
+![9](http://pub.iotek.org/p/VOTEaE3.png)
+![10](http://pub.iotek.org/p/mWpHBQG.png)
+![11](http://pub.iotek.org/p/oyQhwYt.png)
+![12](http://pub.iotek.org/p/JxiBe5s.png)
+![13](http://pub.iotek.org/p/tcAK5Jw.png)
+![14](http://pub.iotek.org/p/YyRXROw.png)
+![15](https://i.imgur.com/hp70r3o.png)
+![16](https://i.imgur.com/WZXJ7yU.jpg)
+![17](https://i.imgur.com/QHY404d.png)
+![18](https://i.imgur.com/PF2Kf18.png)
+
 
 ### How do I use this?
 This project depends on [libfann](https://github.com/libfann/fann). After you have that and clone:
