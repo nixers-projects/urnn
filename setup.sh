@@ -1,14 +1,6 @@
 # setup.sh
 # This file compiles the urnn c programs, and runs an initial train.
 
-# Check if we have the fan header filei
-#  (unsure about consistency between distros here):
-if ! ls /usr/include | grep --quiet -w fann.h; then
-  echo "You need to install libfann to compile urnn."
-  echo "https://github.com/libfann/fann"
-  exit 1
-fi
-
 cd $(dirname $0)
 cd network
 

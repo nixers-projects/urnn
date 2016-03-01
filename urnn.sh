@@ -123,7 +123,7 @@ function urnnputs
 
 # Make things relative to dir this script resides in
 file_rel=`pwd`
-cd $(dirname $0)
+cd $(dirname $([ -L $0  ] && readlink -f $0 || echo $0))
 
 valid="retrain refresh regen colors add addinput"
 [[ -z "$1" ]] && usage
