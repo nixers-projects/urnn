@@ -6,9 +6,9 @@ use Data::Dumper;
 
 =head1
 
-wrapper.pl
+extracter.pl
 
-Usage ./wrapper.pl
+Usage ./extracter.pl
 
 extract the data from images and colorschemes - still a WIP
 
@@ -29,8 +29,7 @@ for (my $i = 0; $i < scalar(@images); $i ++) {
 		print "There are some stuffs wrong in the inputs directory\n";
 		exit 1;
 	}
-	print "[$nb]: \n";
-	print "Converting colorscheme to specific format\n";
+	print "[$nb] Converting colorscheme to specific format\n";
 	if (-f "../dataset/$nb.resources.data") {
 		qx#rm ../dataset/$nb.resources.data#;
 	}
@@ -39,7 +38,7 @@ for (my $i = 0; $i < scalar(@images); $i ++) {
 		../scripts/extract_hex_from_xresources.pl -s |
 		../scripts/convert_hex_to_val_2.pl -s 1 > ../dataset/$nb.resources.data
 	#;
-	print "Extracting 10 most used colors from background\n";
+	print "[$nb] Extracting 10 most used colors from background\n";
 	if (-f "../dataset/$nb.images.data") {
 		qx#rm ../dataset/$nb.images.data#;
 	}
