@@ -23,6 +23,7 @@ setup()
 
   cd ../colors/sin_colors
   make
+  cd ../..
 }
 
 retrain()
