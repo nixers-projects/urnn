@@ -4,25 +4,9 @@ A neural network to smartly create coherent terminal colorschemes based on an im
 
 ### Examples (Colors generated from wallpapers):
 
-![1](http://pub.iotek.org/p/84nIYJl.png)
-![2](http://pub.iotek.org/p/jL2NNE5.png)
-![3](http://pub.iotek.org/p/CG8ZGqZ.png)
-![4](http://pub.iotek.org/p/wG8Fd90.png)
-![5](http://pub.iotek.org/p/vhTj9zq.png)
-![6](http://pub.iotek.org/p/nBMMXv4.png)
-![7](http://pub.iotek.org/p/QPDnQzb.png)
-![8](http://pub.iotek.org/p/xzUveTc.png)
-![9](http://pub.iotek.org/p/VOTEaE3.png)
-![10](http://pub.iotek.org/p/mWpHBQG.png)
-![11](http://pub.iotek.org/p/oyQhwYt.png)
-![12](http://pub.iotek.org/p/JxiBe5s.png)
-![13](http://pub.iotek.org/p/tcAK5Jw.png)
-![14](http://pub.iotek.org/p/YyRXROw.png)
-![15](https://i.imgur.com/hp70r3o.png)
-![16](https://i.imgur.com/WZXJ7yU.jpg)
-![17](https://i.imgur.com/QHY404d.png)
-![18](https://i.imgur.com/PF2Kf18.png)
-
+![1](http://pub.iotek.org/p/84nIYJl.png) | ![2](http://pub.iotek.org/p/jL2NNE5.png)
+-----------------------------------------|----------------------------------------
+[3](http://pub.iotek.org/p/CG8ZGqZ.png) [4](http://pub.iotek.org/p/wG8Fd90.png) [5](http://pub.iotek.org/p/vhTj9zq.png) [6](http://pub.iotek.org/p/nBMMXv4.png) [7](http://pub.iotek.org/p/QPDnQzb.png) [8](http://pub.iotek.org/p/xzUveTc.png) [9](http://pub.iotek.org/p/VOTEaE3.png) [10](http://pub.iotek.org/p/mWpHBQG.png) [11](http://pub.iotek.org/p/oyQhwYt.png) [12](http://pub.iotek.org/p/JxiBe5s.png) [13](http://pub.iotek.org/p/tcAK5Jw.png) [14](http://pub.iotek.org/p/YyRXROw.png) [15](https://i.imgur.com/hp70r3o.png) [16](https://i.imgur.com/WZXJ7yU.jpg) [17](https://i.imgur.com/QHY404d.png) [18](https://i.imgur.com/PF2Kf18.png)
 
 ### How do I use this?
 This project depends on [libfann](https://github.com/libfann/fann). After you have that and clone:
@@ -48,11 +32,11 @@ Colors are converted to a value that is between 0 and 1, for speed/use with [fan
 
 for example, say we have a pixel with the rgb value of (255, 120, 70). to display this information in a format that the neural network can understand, we have to convert it to 3 floats. each consist of the color/255 (max value).
 
+```
 255/255 = 1.00000000
-
 120/255 = 0.47058823
-
 70/255  = 0.27450980
+```
 
 so there you have it. our pixel is represented by 1.00000000 0.47058823 0.27450980
 
