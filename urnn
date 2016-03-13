@@ -18,11 +18,11 @@ setup()
 {
   [[ -f network/urnn_train ]] && return 0
   cd network
-  cc urnn_train.c -o urnn_train -l fann -l m
-  cc urnn_run.c -o urnn_run -l fann -l m -std=c99
+  cc urnn_train.c -o urnn_train -l fann -l m       > /dev/null
+  cc urnn_run.c -o urnn_run -l fann -l m -std=c99  > /dev/null
 
   cd ../colors/sin_colors
-  make
+  make --silent
   cd ../..
 }
 
