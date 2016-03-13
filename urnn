@@ -14,6 +14,17 @@ usage()
   echo "       addinput (img) (Xres) generate and add urnn data to dataset, and add files to input/staging"
 }
 
+setup()
+{
+  [[ -f network/urnn_train ]] && return 0
+  cd network
+  cc urnn_train.c -o urnn_train -l fann -l m
+  cc urnn_run.c -o urnn_run -l fann -l m -std=c99
+
+  cd ../colors/sin_colors
+  make
+}
+
 retrain()
 {
   cd network
@@ -124,6 +135,7 @@ urnnputs()
 file_rel=`pwd`
 cd $(dirname $([ -L $0  ] && readlink -f $0 || echo $0))
 
+setup
 valid="retrain refresh regen colors add addinput"
 [[ -z "$1" ]] && usage
 [[ $valid =~ $1 ]] && $@ || usage

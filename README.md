@@ -9,12 +9,11 @@ A neural network to smartly create coherent terminal colorschemes based on an im
 [3](http://pub.iotek.org/p/CG8ZGqZ.png) [4](http://pub.iotek.org/p/wG8Fd90.png) [5](http://pub.iotek.org/p/vhTj9zq.png) [6](http://pub.iotek.org/p/nBMMXv4.png) [7](http://pub.iotek.org/p/QPDnQzb.png) [8](http://pub.iotek.org/p/xzUveTc.png) [9](http://pub.iotek.org/p/VOTEaE3.png) [10](http://pub.iotek.org/p/mWpHBQG.png) [11](http://pub.iotek.org/p/oyQhwYt.png) [12](http://pub.iotek.org/p/JxiBe5s.png) [13](http://pub.iotek.org/p/tcAK5Jw.png) [14](http://pub.iotek.org/p/YyRXROw.png) [15](https://i.imgur.com/hp70r3o.png) [16](https://i.imgur.com/WZXJ7yU.jpg) [17](https://i.imgur.com/QHY404d.png) [18](https://i.imgur.com/PF2Kf18.png)
 
 ### How do I use this?
-This project depends on [libfann](https://github.com/libfann/fann). After you have that and clone:
+This project depends on [libfann](https://github.com/libfann/fann) and libpng. After you have those and clone:
 ``` bash
-$ ./setup.sh
-$ ./urnn.sh colors /some/file.png
+$ ./urnn colors /some/file.png
 ```
-And colors will be printed to STDOUT in an Xresources format. If you the results you get are meh, you can retrain urnn with `./urnn.sh retrain`. There are other options as well.
+And colors will be printed to STDOUT in an Xresources format. If you the results you get are meh, you can retrain urnn with `./urnn retrain`. There are other options as well.
 
 ### Repo layout
 
@@ -54,12 +53,12 @@ If you just want to submit them for addition to the inputs, see https://github.c
 
 If you want to test one or more here to see what kind of effect you can have on the network:
 ``` bash
-$ urnn.sh add /some/image.png /test/.Xresouces
-$ urnn.sh add /some/other/image.png /second/.Xresouces
-$ urnn.sh refresh
-$ urnn.sh retrain
+$ urnn add /some/image.png /test/.Xresouces
+$ urnn add /some/other/image.png /second/.Xresouces
+$ urnn refresh
+$ urnn retrain
 ```
-You will then have a trained set including your inputs, and could test out the `urnn.sh colors` command and see that kind of effect you had. If any of the outputs are desirable, consider submitting a pull request with them ;)
+You will then have a trained set including your inputs, and could test out the `urnn colors` command and see that kind of effect you had. If any of the outputs are desirable, consider submitting a pull request with them ;)
 
 #### Related links
 - [Venams blog post](http://venam.nixers.net/blog/programming/2015/07/06/project-summer-july-2015.html)
