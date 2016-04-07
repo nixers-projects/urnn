@@ -11,9 +11,18 @@ A neural network to smartly create coherent terminal colorschemes based on an im
 ### How do I use this?
 This project depends on [libfann](https://github.com/libfann/fann) and libpng. After you have those and clone:
 ``` bash
-$ ./urnn colors /some/file.png
+./urnn colors <some file.png>
+       \____/  \___________/
+          |          |
+          |          \- The wallpaper you want to have your terminal
+          |             colors fit with.
+          |
+          \- The colors command will print to STDOUT, in an Xresources
+             format the colors that resulted after passing through the
+             neural network. If the colors are bad you can retrain the
+             network (see the help for more commands)
+
 ```
-And colors will be printed to STDOUT in an Xresources format. If you the results you get are meh, you can retrain urnn with `./urnn retrain`. There are other options as well.
 
 ### Repo layout
 
