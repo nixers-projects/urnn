@@ -74,12 +74,8 @@ colors()
   fi
 
   store="$(mktemp)"
-<<<<<<< HEAD
   #TODO - make sure there are 10 colors
   colors/sin_colors/colors -p $file | scripts/convert_hex_to_val_2.pl -s 1 > $store
-=======
-  colors/sin_colors/colors -n 10 $file | scripts/convert_hex_to_val_2.pl -s 1 > $store
->>>>>>> 8a9efaba908764c7f31cd34df803473a8f12689a
   network/urnn_run network/urnn.trained $store | xargs -n3 | scripts/convert_val_to_xresources_colors_2.pl -s 1 -n
 }
 
@@ -107,13 +103,8 @@ add()
   cd scripts
   # Xresources
   ./extract_hex_from_xresources.pl "$xres_file" | ./convert_hex_to_val_2.pl -s 1 > ../dataset/${filename}.resources.data
-<<<<<<< HEAD
   #TODO - make sure there are 10 colors
   ../colors/sin_colors/colors -p "$image_file" | ./convert_hex_to_val_2.pl -s 1 > ../dataset/${filename}.images.data
-=======
-  ../colors/sin_colors/colors -n 10 "$image_file" | ./convert_hex_to_val_2.pl -s 1 > ../dataset/${filename}.images.data
->>>>>>> 8a9efaba908764c7f31cd34df803473a8f12689a
-
   cd ..
 }
 
