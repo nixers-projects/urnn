@@ -49,12 +49,14 @@ for (my $i = 0; $i < scalar(@images); $i ++) {
 	# cut -d ' ' -f1 |
 	# head -n 10 |
 	#
-	my $result = qx#../colors/sin_colors/colors -pn 10 $images[$i]#;
+	my $result = qx#../colors/sin_colors/colors -p $images[$i]#;
 	my @avail_cols = split /\n/, $result;
-	my $num_col_left = 9-scalar(@avail_cols);
+	my $size = scalar(@avail_cols);
+	print "\n\n$size\n\n";;
+	my $num_col_left = 10-scalar(@avail_cols);
 	print "Missing $num_col_left colors - adding random ones\n";
-	for (0..$num_col_left) {
-		my $to_add = int(rand($#avail_cols));
+	for (0.. ($num_col_left-1) ) {
+		my $to_add = int(rand($size));
 		push @avail_cols, $avail_cols[$to_add];
 	}
 	my $conv_arg = join "\n",@avail_cols;
