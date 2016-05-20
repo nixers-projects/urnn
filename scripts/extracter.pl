@@ -49,7 +49,7 @@ for (my $i = 0; $i < scalar(@images); $i ++) {
 	# cut -d ' ' -f1 |
 	# head -n 10 |
 	#
-	my $result = qx#../colors/sin_colors/colors -p $images[$i]#;
+	my $result = qx#../colors/sin_colors/colors -pn 10 $images[$i]#;
 	my @avail_cols = split /\n/, $result;
 	my $size = scalar(@avail_cols);
 	print "\n\n$size\n\n";;
