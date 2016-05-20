@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 # wrapper script for urnn scripts and functions
 
 # planned:
@@ -12,18 +12,14 @@ usage()
   echo "       colors (img)          generate xresources to STDOUT using current training result"
   echo "       add (img) (Xres)      generate and add urnn data to current dataset(for quickly testing)"
   echo "       addinput (img) (Xres) generate and add urnn data to dataset, and add files to input/staging"
+  exit 1
 }
 
 setup()
 {
-  [[ -f network/urnn_train ]] && return 0
-  cd network
-  cc urnn_train.c -o urnn_train -l fann -l m       > /dev/null
-  cc urnn_run.c -o urnn_run -l fann -l m -std=c99  > /dev/null
-
-  cd ../colors/sin_colors
-  make --silent
-  cd ../..
+  [ -f network/urnn_train ] && return 0
+  make --silent -C network
+  make --silent -C colors/sin_colors
 }
 
 retrain()
@@ -67,8 +63,8 @@ refresh()
 colors()
 {
   file="$1"
-  [[ -z "$file" ]] && usage && exit 1
-  [[ ! -f "$file" ]] && echo "ERR: could not find $file" && exit 1
+  [ -z "$file" ] && usage
+  [ ! -f "$file" ] && echo "ERR: could not find $file" && exit 1
 
   # Is this a png file?
   if ! file "$file" | grep "PNG image data" > /dev/null; then
@@ -89,9 +85,9 @@ add()
 {
   image_file="$file_rel/$1"
   xres_file="$file_rel/$2"
-  [[ -z "$image_file" ]] && usage && exit 1
-  [[ -z "$xres_file" ]] && usage && exit 1
-  [[ ! -f "$image_file" ]] && echo "ERR: could not find $image_file" && exit 1
+  [ -z "$image_file" ] && usage
+  [ -z "$xres_file" ] && usage
+  [ ! -f "$image_file" ] && echo "ERR: could not find $image_file" && exit 1
 
   # Is this a png image_file?
   if ! file "$image_file" | grep "PNG image data"; then
@@ -133,10 +129,18 @@ urnnputs()
 }
 
 # Make things relative to dir this script resides in
-file_rel=`pwd`
+file_rel=$(pwd)
 cd $(dirname $([ -L $0  ] && readlink -f $0 || echo $0))
 
 setup
-valid="retrain refresh regen colors add addinput"
-[[ -z "$1" ]] && usage
-[[ $valid =~ $1 ]] && $@ || usage
+if [ $? -ne 0 ]; then
+  echo "Compilation failed. Do you have libfann and libpng installed?"
+  exit 1
+fi
+
+case $1 in
+  retrain|refresh|regen|colors|add|addinput)
+    $@ || usage;;
+  *)
+    usage;;
+esac
