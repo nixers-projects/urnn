@@ -54,9 +54,7 @@ sub convert_file {
 	}
 	
 	my $size = scalar(@avail_cols);
-	print "\n\n$size\n\n";;
 	my $num_col_left = 10-scalar(@avail_cols);
-	print "Missing $num_col_left colors - adding random ones\n";
 	for (0.. ($num_col_left-1) ) {
 		my $to_add = int(rand($size));
 		push @avail_cols, $avail_cols[$to_add];
