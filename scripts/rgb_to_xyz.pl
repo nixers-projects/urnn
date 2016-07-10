@@ -56,7 +56,7 @@ sub rgb_to_xyz {
 
 sub main {
 	my ($r, $g, $b) = @ARGV;
-	HELP if (!$r || !$g || !$b);
+	HELP if (!defined($r) || !defined($g) || !defined($b));
 	my ($x, $y, $z) =  rgb_to_xyz($r, $g, $b);
 	print "$x $y $z";
 }

@@ -56,7 +56,7 @@ sub Lab_to_xyz {
 
 sub main {
 	my ($l, $a, $b) = @ARGV;
-	HELP if (!$l || !$a || !$b);
+	HELP if (!defined($l) || !defined($a) || !defined($b));
 	my ($x, $y, $z) =  Lab_to_xyz($l, $a, $b);
 	print "$x $y $z";
 }

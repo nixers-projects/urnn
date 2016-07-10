@@ -47,7 +47,7 @@ sub xyz_to_Lab {
 
 sub main {
 	my ($x, $y, $z) = @ARGV;
-	HELP if (!$x || !$y || !$z);
+	HELP if (!defined($x) || !defined($y) || !defined($z));
 	my ($L, $A, $B) =  xyz_to_Lab($x, $y, $z);
 	print "$L $A $B";
 }

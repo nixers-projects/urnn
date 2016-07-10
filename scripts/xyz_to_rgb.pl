@@ -45,7 +45,7 @@ sub xyz_to_rgb {
 
 sub main {
 	my ($x, $y, $z) = @ARGV;
-	HELP if (!$x || !$y || !$z);
+	HELP if (!defined($x) || !defined($y) || !defined($z));
 	my ($r, $g, $b) =  xyz_to_rgb($x, $y, $z);
 	print "$r $g $b";
 }
