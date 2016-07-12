@@ -49,16 +49,9 @@ for (my $i = 0; $i < scalar(@images); $i ++) {
 	# cut -d ' ' -f1 |
 	# head -n 10 |
 	#
-	my $result = qx#../colors/sin_colors/colors -pn 10 $images[$i]#;
-	my @avail_cols = split /\n/, $result;
-	my $size = scalar(@avail_cols);
-	print "\n\n$size\n\n";;
-	my $num_col_left = 10-scalar(@avail_cols);
-	print "Missing $num_col_left colors - adding random ones\n";
-	for (0.. ($num_col_left-1) ) {
-		my $to_add = int(rand($size));
-		push @avail_cols, $avail_cols[$to_add];
-	}
+	my $result = qx#../colors/sin_colors/colors -en 10 $images[$i] | xargs -n 10#;
+	my $fixed_colors = qx#../scripts/fix_colors.pl '$result'#;
+	my @avail_cols = split / /,$fixed_colors;
 	my $conv_arg = join "\n",@avail_cols;
 	$result = qx#
 		echo "$conv_arg" |

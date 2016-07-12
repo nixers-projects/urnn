@@ -55,7 +55,14 @@ sub get_hex_from_lab {
 }
 
 sub main {
-	my @avail_colors = @ARGV;
+	my @avail_colors;
+	if (scalar(@ARGV) == 1 and $ARGV[0] =~ / /) {
+		chomp $ARGV[0];
+		@avail_colors = split / /, $ARGV[0];
+	}
+	else {
+		@avail_colors = @ARGV;
+	}
 	HELP if (scalar(@avail_colors) == 0);
 	#remove any '#' char
 	for (@avail_colors) {
@@ -89,7 +96,6 @@ sub main {
 	$_ = hex($_) for (@avail_colors);
 	@avail_colors = sort{$a <=> $b} @avail_colors;
 	printf("#%06x ",$_)  for (@avail_colors);
-
 }
 
 main;
