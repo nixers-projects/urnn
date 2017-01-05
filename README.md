@@ -31,7 +31,7 @@ Folder	| Contents
 colors 	| Programs for extracting colors from png images in different ways.
 scripts | Scripts for misc tasks(using the color extractors, parsing .Xresources files, ...)
 network | Folder containing the meat of this project, programs and scripts to train and use the neural network, as well as extract data and put it in the correct form to use.
-inputs 	| Git submodule that points to the [urnnputs](https://github.com/neeasade/urnnputs), containing images and resources file to extract data from to use to train the neural network.
+inputs 	| Git submodule that points to the [urnnputs](https://github.com/nixers-projects/urnnputs), containing images and resources file to extract data from to use to train the neural network.
 dataset | The extracted data from the inputs folder in a form suitable used to train urnn(explained below)
 
 #### Dataset contents(color representation)
@@ -58,7 +58,7 @@ so there you have it. our pixel is represented by 1.00000000 0.47058823 0.274509
 ### How To Contribute
 
 Have inputs(pairs of xresources and walls) that you want to add?
-If you just want to submit them for addition to the inputs, see https://github.com/neeasade/urnnputs#contributing
+If you just want to submit them for addition to the inputs, see https://github.com/nixers-projects/urnnputs#contributing
 
 If you want to test one or more here to see what kind of effect you can have on the network:
 ``` bash
